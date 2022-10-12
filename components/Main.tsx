@@ -1,4 +1,6 @@
 import { ReactNode } from "react";
+import { Footer } from "./Footer";
+import { Header } from "./Header";
 
 interface MainProps {
   children: ReactNode;
@@ -6,8 +8,12 @@ interface MainProps {
 
 export const Main = ({ children }: MainProps) => {
   return (
-    <main className="flex-grow max-w-2xl mx-auto grid p-6 gap-6 sm:grid-cols-2 bg-teal-100">
-      {children}
-    </main>
+    <div className="flex flex-col min-h-screen">
+      <Header />
+        <main className="flex-grow container mx-auto">
+          {children}
+        </main>
+      <Footer />
+    </div>
   );
 };
