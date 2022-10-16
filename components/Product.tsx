@@ -1,5 +1,3 @@
-import { Rating } from "./Rating"
-
 interface ProductProps {
   data: {
     title: string,
