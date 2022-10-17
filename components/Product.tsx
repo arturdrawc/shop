@@ -1,14 +1,25 @@
-interface ProductProps {
-  data: {
-    title: string,
-    description: string;
-    thumbnailUrl: string;
-    thumbnailAlt: string;
-    rating: number;
-  };
+interface ProductDetails {
+  title: string,
+  description: string;
+  thumbnailUrl: string;
+  thumbnailAlt: string;
+  rating: number;
 }
 
-export const Product = ({ data }: ProductProps) => {
+type ProductListItem = Pick<
+  ProductDetails,
+  'title' | 'thumbnailUrl' | 'thumbnailAlt'
+>;
+
+interface ProductListItemProps {
+  data: ProductListItem;
+}
+
+interface ProductProps {
+  data: ProductDetails;
+}
+
+export const ProductListItem = ({ data }: ProductListItemProps) => {
   return (
     <div className="p-4 border-2 rounded-lg">
       <h2>
@@ -23,6 +34,26 @@ export const Product = ({ data }: ProductProps) => {
             className="object-cover object-center"
           />
 
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const ProductDetails = ({ data }: ProductProps) => {
+  return (
+    <div className="p-4 border-2 rounded-lg">
+      <h2>
+        {data.title}
+      </h2>
+
+      <div className="flex flex-col sm:flex-row">
+        <div className="overflow-hidden rounded-lg sm:col-span-4 lg:col-span-5">
+          <img
+            src={data.thumbnailUrl}
+            alt={data.thumbnailAlt}
+            className="object-cover object-center"
+          />
         </div>
 
         <div className="mt-3 sm:mt-0 sm:ml-4">

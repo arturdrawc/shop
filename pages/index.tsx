@@ -1,5 +1,5 @@
 import { Main } from "../components/Main";
-import { Product } from "../components/Product";
+import { ProductListItem } from "../components/Product";
 
 const DATA = {
   title: 'Lorem ipsum',
@@ -13,7 +13,7 @@ const DATA = {
 const Home = () => {
   return (
     <Main>
-      <Product data={DATA} />
+      <ProductListItem data={DATA} />
     </Main>
   );
 };
