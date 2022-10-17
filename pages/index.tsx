@@ -2,6 +2,7 @@ import { Main } from "../components/Main";
 import { ProductListItem } from "../components/Product";
 
 const DATA = {
+  id: 1,
   title: 'Lorem ipsum',
   description:
     "Contrary to popular belief, Lorem Ipsum is not simply random text.",

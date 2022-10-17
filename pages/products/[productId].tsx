@@ -1,7 +1,5 @@
-import {
-  GetStaticPropsContext,
-  InferGetStaticPropsType,
-} from "next";
+import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
+import Link from "next/link";
 import { ProductDetails } from "../../components/Product";
 
 const ProductIdPage = ({
@@ -13,8 +11,12 @@ const ProductIdPage = ({
 
   return (
     <div>
+      <Link href="/products">
+        <a>Wróć na stronę główną</a>
+      </Link>
       <ProductDetails
         data={{
+          id: data.id,
           title: data.title,
           thumbnailUrl: data.image,
           thumbnailAlt: data.title,
@@ -28,15 +30,18 @@ const ProductIdPage = ({
 
 export default ProductIdPage;
 
-export const getStaticPaths = () => {
+export const getStaticPaths = async () => {
+  const response = await fetch(`https://fakestoreapi.com/products/`);
+  const data: StoreApiResponse[] = await response.json();
+
   return {
-    paths: [
-      {
+    paths: data.map((product) => {
+      return {
         params: {
-          productId: "1",
+          productId: String(product.id),
         },
-      },
-    ],
+      };
+    }),
     fallback: false,
   };
 };
@@ -49,9 +54,7 @@ export type InferGetStaticPathsType<T> = T extends () => Promise<{
 
 export const getStaticProps = async ({
   params,
-}: GetStaticPropsContext<
-  InferGetStaticPathsType<typeof getStaticPaths>
->) => {
+}: GetStaticPropsContext<InferGetStaticPathsType<typeof getStaticPaths>>) => {
   if (!params?.productId) {
     return {
       props: {},

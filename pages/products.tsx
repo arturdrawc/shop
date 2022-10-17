@@ -10,6 +10,7 @@ const ProductPage = ({data}: InferGetStaticPropsType<typeof getStaticProps>) => 
           className="mx-2"
         >
           <ProductListItem data={{
+            id: product.id,
             title: product.title,
             thumbnailUrl: product.image,
             thumbnailAlt: product.title,

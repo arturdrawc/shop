@@ -1,5 +1,8 @@
+import Link from "next/link";
+
 interface ProductDetails {
-  title: string,
+  id: number;
+  title: string;
   description: string;
   thumbnailUrl: string;
   thumbnailAlt: string;
@@ -8,7 +11,7 @@ interface ProductDetails {
 
 type ProductListItem = Pick<
   ProductDetails,
-  'title' | 'thumbnailUrl' | 'thumbnailAlt'
+  'id' | 'title' | 'thumbnailUrl' | 'thumbnailAlt'
 >;
 
 interface ProductListItemProps {
@@ -22,9 +25,13 @@ interface ProductProps {
 export const ProductListItem = ({ data }: ProductListItemProps) => {
   return (
     <div className="p-4 border-2 rounded-lg">
-      <h2>
-        {data.title}
-      </h2>
+      <Link href={`/products/${data.id}`}>
+        <a>
+          <h2>
+            {data.title}
+          </h2>
+        </a>
+      </Link>
 
       <div className="flex flex-col sm:flex-row">
         <div className="overflow-hidden rounded-lg sm:col-span-4 lg:col-span-5">
