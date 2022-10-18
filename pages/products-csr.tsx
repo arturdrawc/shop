@@ -1,14 +1,27 @@
 import { useQuery } from "@tanstack/react-query";
+import { useRouter } from "next/router";
 import { ProductListItem } from "../components/Product";
+import { ProductsPagination } from "../components/ProductsPagination";
 
-const getProducts = async () => {
-  const response = await fetch("https://fakestoreapi.com/products");
-  const data: StoreApiResponse[] = await response.json();
-  return data;
-};
+const PRODUCTS_PER_PAGE = 25;
 
 const ProductCSRPage = () => {
-  const { isLoading, data, error} = useQuery(['products'], getProducts);
+  const { query } = useRouter();
+  const page = Number(query.page);
+  const offset = page
+    ? PRODUCTS_PER_PAGE * page - PRODUCTS_PER_PAGE
+    : 0;
+
+  const getProducts = async () => {
+    const response = await fetch(`https://naszsklep-api.vercel.app/api/products?take=${PRODUCTS_PER_PAGE}&offset=${offset}`);
+    const data: StoreApiResponse[] = await response.json();
+    return data;
+  };
+
+  const { isLoading, data, error } = useQuery<StoreApiResponse[]>(
+    ['products', offset],
+    getProducts,
+  );
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -19,36 +32,29 @@ const ProductCSRPage = () => {
   }
 
   return (
-    <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-      {data.map((product) => {
-        return <li
-          key={product.id}
-          className="mx-2"
-        >
-          <ProductListItem data={{
-            id: product.id,
-            title: product.title,
-            thumbnailUrl: product.image,
-            thumbnailAlt: product.title,
-          }} />
-        </li>
-      })}
-    </ul>
+    <>
+      <ProductsPagination />
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        {data.map((product) => {
+          return (
+            <li key={product.id} className="mx-2">
+              <ProductListItem
+                data={{
+                  id: product.id,
+                  title: product.title,
+                  thumbnailUrl: product.image,
+                  thumbnailAlt: product.title,
+                }}
+              />
+            </li>
+          );
+        })}
+      </ul>
+    </>
   );
 };
 
 export default ProductCSRPage;
-
-export const getStaticProps = async () => {
-  const response = await fetch("https://fakestoreapi.com/products");
-  const data: StoreApiResponse[] = await response.json();
-
-  return {
-    props: {
-      data,
-    },
-  };
-};
 
 export interface StoreApiResponse {
   id: number;
