@@ -1,9 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { ProductListItem } from "../components/Product";
-import { ProductsPagination } from "../components/ProductsPagination";
-
-const PRODUCTS_PER_PAGE = 25;
+import { ProductsPaginationCSR, PRODUCTS_PER_PAGE } from "../components/ProductsPaginationCSR";
 
 const ProductCSRPage = () => {
   const { query } = useRouter();
@@ -33,7 +31,7 @@ const ProductCSRPage = () => {
 
   return (
     <>
-      <ProductsPagination />
+      <ProductsPaginationCSR />
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         {data.map((product) => {
           return (

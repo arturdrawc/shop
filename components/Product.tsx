@@ -25,7 +25,7 @@ interface ProductProps {
 export const ProductListItem = ({ data }: ProductListItemProps) => {
   return (
     <div className="p-4 border-2 rounded-lg">
-      <Link href={`/products/${data.id}`}>
+      <Link href={`/products/item/${data.id}`}>
         <a>
           <h2>
             {data.title}

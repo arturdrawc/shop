@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 const routes = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "ProductsSSG", href: "/products" },
+  { name: "ProductsSSG", href: "/products/1" },
   { name: "ProductsCSR", href: "/products-csr" },
 ];
 

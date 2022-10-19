@@ -1,6 +1,6 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import Link from "next/link";
-import { ProductDetails } from "../../components/Product";
+import { ProductDetails } from "../../../components/Product";
 
 const ProductIdPage = ({
   data,
@@ -31,7 +31,7 @@ const ProductIdPage = ({
 export default ProductIdPage;
 
 export const getStaticPaths = async () => {
-  const response = await fetch(`https://fakestoreapi.com/products/`);
+  const response = await fetch(`https://naszsklep-api.vercel.app/api/products?take=5`);
   const data: StoreApiResponse[] = await response.json();
 
   return {
@@ -63,7 +63,7 @@ export const getStaticProps = async ({
   }
 
   const response = await fetch(
-    `https://fakestoreapi.com/products/${params?.productId}`
+    `https://naszsklep-api.vercel.app/api/products/${params?.productId}`
   );
   const data: StoreApiResponse | null = await response.json();
 
