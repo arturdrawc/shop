@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 interface ProductDetails {
   id: number;
@@ -33,15 +34,15 @@ export const ProductListItem = ({ data }: ProductListItemProps) => {
         </a>
       </Link>
 
-      <div className="flex flex-col sm:flex-row">
-        <div className="overflow-hidden rounded-lg sm:col-span-4 lg:col-span-5">
-          <img
-            src={data.thumbnailUrl}
-            alt={data.thumbnailAlt}
-            className="object-cover object-center"
-          />
-
-        </div>
+      <div>
+        <Image
+          layout="responsive"
+          width={16}
+          height={9}
+          objectFit="contain"
+          src={data.thumbnailUrl}
+          alt={data.thumbnailAlt}
+        />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
-import { ProductListItem } from "../components/Product";
+import { ProductListItem } from "../components/ProductListItem";
 import { ProductsPaginationCSR, PRODUCTS_PER_PAGE } from "../components/ProductsPaginationCSR";
 
 const ProductCSRPage = () => {
