@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import ReactMarkdown from "react-markdown";
 import { NextSeo } from "next-seo";
+import { MarkdownContent } from "./MarkdownContent";
 
 interface ProductDetails {
   id: number;
@@ -15,7 +15,7 @@ interface ProductDetails {
 
 type ProductListItem = Pick<
   ProductDetails,
-  'id' | 'title' | 'thumbnailUrl' | 'thumbnailAlt'
+  "id" | "title" | "thumbnailUrl" | "thumbnailAlt"
 >;
 
 interface ProductListItemProps {
@@ -31,9 +31,7 @@ export const ProductListItem = ({ data }: ProductListItemProps) => {
     <div className="p-4 border-2 rounded-lg">
       <Link href={`/products/item/${data.id}`}>
         <a>
-          <h2>
-            {data.title}
-          </h2>
+          <h2>{data.title}</h2>
         </a>
       </Link>
 
@@ -54,14 +52,9 @@ export const ProductListItem = ({ data }: ProductListItemProps) => {
 export const ProductDetails = ({ data }: ProductProps) => {
   return (
     <div className="p-4 border-2 rounded-lg">
-      <NextSeo
-        title={data.title}
-        description={data.description}
-      />
+      <NextSeo title={data.title} description={data.description} />
 
-      <h2>
-        {data.title}
-      </h2>
+      <h2>{data.title}</h2>
 
       <div className="flex flex-col sm:flex-row">
         <div className="overflow-hidden rounded-lg sm:col-span-4 lg:col-span-5">
@@ -77,17 +70,13 @@ export const ProductDetails = ({ data }: ProductProps) => {
             {data.description}
           </p>
 
-          <article className="prose lg:prose-xl">
-            <ReactMarkdown className="text-md font-semibold text-gray-900 sm:pr-12">
-              {data.longDescription}
-            </ReactMarkdown>
-          </article>
+          <MarkdownContent>
+            {data.longDescription}
+          </MarkdownContent>
 
           <div className="mt-3">
             Rating:
-            <span className="ml-4 font-semibold">
-              {data.rating}
-            </span>
+            <span className="ml-4 font-semibold">{data.rating}</span>
           </div>
         </div>
       </div>

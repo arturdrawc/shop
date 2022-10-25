@@ -31,7 +31,7 @@ export const ProductsPaginationSSG = () => {
 
   return (
     <nav className="border-t border-gray-200 px-4 flex items-center justify-between sm:px-0">
-      <div className="hidden md:-mt-px md:flex">
+      <div className="md:-mt-px">
         {pages}
       </div>
     </nav>
