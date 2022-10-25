@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
+import ReactMarkdown from "react-markdown";
+import { NextSeo } from "next-seo";
 
 interface ProductDetails {
   id: number;
@@ -8,6 +10,7 @@ interface ProductDetails {
   thumbnailUrl: string;
   thumbnailAlt: string;
   rating: number;
+  longDescription: string;
 }
 
 type ProductListItem = Pick<
@@ -51,6 +54,11 @@ export const ProductListItem = ({ data }: ProductListItemProps) => {
 export const ProductDetails = ({ data }: ProductProps) => {
   return (
     <div className="p-4 border-2 rounded-lg">
+      <NextSeo
+        title={data.title}
+        description={data.description}
+      />
+
       <h2>
         {data.title}
       </h2>
@@ -68,6 +76,12 @@ export const ProductDetails = ({ data }: ProductProps) => {
           <p className="text-md font-semibold text-gray-900 sm:pr-12">
             {data.description}
           </p>
+
+          <article className="prose lg:prose-xl">
+            <ReactMarkdown className="text-md font-semibold text-gray-900 sm:pr-12">
+              {data.longDescription}
+            </ReactMarkdown>
+          </article>
 
           <div className="mt-3">
             Rating:

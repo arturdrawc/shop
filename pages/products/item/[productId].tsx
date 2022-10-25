@@ -1,6 +1,6 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import Link from "next/link";
-import { ProductDetails } from "../../../components/ProductListItem";
+import { ProductDetails } from "../../../components/ProductDetails";
 
 const ProductIdPage = ({
   data,
@@ -11,7 +11,7 @@ const ProductIdPage = ({
 
   return (
     <div>
-      <Link href="/products">
+      <Link href="/products/1">
         <a>Wróć na stronę główną</a>
       </Link>
       <ProductDetails
@@ -22,6 +22,7 @@ const ProductIdPage = ({
           thumbnailAlt: data.title,
           description: data.description,
           rating: data.rating.rate,
+          longDescription: data.longDescription,
         }}
       />
     </div>
@@ -79,6 +80,7 @@ export interface StoreApiResponse {
   title: string;
   price: number;
   description: string;
+  longDescription: string;
   category: string;
   image: string;
   rating: {
