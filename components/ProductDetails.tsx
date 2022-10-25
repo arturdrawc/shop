@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { NextSeo } from "next-seo";
 import { MarkdownContent } from "./MarkdownContent";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 interface ProductDetails {
   id: number;
@@ -10,7 +11,7 @@ interface ProductDetails {
   thumbnailUrl: string;
   thumbnailAlt: string;
   rating: number;
-  longDescription: string;
+  longDescription: MDXRemoteSerializeResult<Record<string, unknown>>;
 }
 
 type ProductListItem = Pick<
