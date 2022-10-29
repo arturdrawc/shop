@@ -1,15 +1,9 @@
-import { ReactNode } from "react";
-import { Footer } from "./Footer";
-import { Header } from "./Header";
+import { ReactNode } from 'react';
 
 interface MainProps {
-  children: ReactNode;
+	children: ReactNode;
 }
 
 export const Main = ({ children }: MainProps) => {
-  return (
-    <main className="flex-grow container mx-auto">
-      {children}
-    </main>
-  );
+	return <main className="container mx-auto flex-grow">{children}</main>;
 };
