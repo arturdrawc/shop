@@ -1,5 +1,5 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-import { ProductListItem } from '../../components/Products/ProductDetails';
+import { ProductListItem } from '../../components/Products/ProductListItem';
 import {
 	ProductsPaginationSSG,
 	PAGES_AMOUNT,
