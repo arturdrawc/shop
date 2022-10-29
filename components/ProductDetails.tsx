@@ -3,6 +3,7 @@ import Image from "next/image";
 import { NextSeo } from "next-seo";
 import { MarkdownContent } from "./MarkdownContent";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
+import { useCartState } from "./Cart/CartContext";
 
 interface ProductDetails {
   id: number;
@@ -11,12 +12,13 @@ interface ProductDetails {
   thumbnailUrl: string;
   thumbnailAlt: string;
   rating: number;
+  price: number;
   longDescription: MDXRemoteSerializeResult<Record<string, unknown>>;
 }
 
 type ProductListItem = Pick<
   ProductDetails,
-  "id" | "title" | "thumbnailUrl" | "thumbnailAlt"
+  "id" | "title" | "thumbnailUrl" | "thumbnailAlt" | "price"
 >;
 
 interface ProductListItemProps {
@@ -28,6 +30,8 @@ interface ProductProps {
 }
 
 export const ProductListItem = ({ data }: ProductListItemProps) => {
+  const cartState = useCartState();
+
   return (
     <div className="p-4 border-2 rounded-lg">
       <Link href={`/products/item/${data.id}`}>
@@ -46,6 +50,19 @@ export const ProductListItem = ({ data }: ProductListItemProps) => {
           alt={data.thumbnailAlt}
         />
       </div>
+
+      <button
+        onClick={() => {
+          cartState.addItemToCart({
+            id: data.id,
+            price: data.price,
+            id: data.title,
+            count: 1,
+          });
+        }}
+      >
+        Dodaj do koszyka
+      </button>
     </div>
   );
 };
@@ -71,9 +88,7 @@ export const ProductDetails = ({ data }: ProductProps) => {
             {data.description}
           </p>
 
-          <MarkdownContent>
-            {data.longDescription}
-          </MarkdownContent>
+          <MarkdownContent>{data.longDescription}</MarkdownContent>
 
           <div className="mt-3">
             Rating:
