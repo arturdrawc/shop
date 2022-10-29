@@ -1,5 +1,5 @@
 import { Main } from '../components/Main';
-import { ProductListItem } from '../components/Products/ProductListItemils';
+import { ProductListItem } from '../components/Products/ProductListItem';
 
 const DATA = {
 	id: 1,
