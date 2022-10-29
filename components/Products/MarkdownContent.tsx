@@ -16,6 +16,14 @@ export const MarkdownContent = ({
 							return <a {...props}></a>;
 						}
 
+						if (href.startsWith(process.env.APP_URL as string)) {
+							return (
+								<Link href={href}>
+									<a {...props} />
+								</Link>
+							);
+						}
+
 						if (href.startsWith('http')) {
 							return (
 								<a
