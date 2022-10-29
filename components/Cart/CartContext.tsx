@@ -5,13 +5,8 @@ import {
 	useEffect,
 	useState,
 } from 'react';
+import { CartItem, getCartItemsFromStorage, setCartItemsInStorage } from './cartStorage';
 
-interface CartItem {
-	id: number;
-	price: number;
-	title: string;
-	count: number;
-}
 
 interface CartState {
 	items: CartItem[] | undefined;
@@ -20,26 +15,7 @@ interface CartState {
 }
 
 export const CartStateContext = createContext<CartState | null>(null);
-///
-const getCartItemsFromStorage = () => {
-	const itemsFromLocalStorage = localStorage.getItem('CART');
-	if (!itemsFromLocalStorage) {
-		return [];
-	}
 
-	try {
-		const items = JSON.parse(itemsFromLocalStorage);
-		return items;
-	} catch (err) {
-		console.error(err);
-		return [];
-	}
-};
-
-const setCartItemsInStorage = (cartItems: CartItem[]) => {
-	localStorage.setItem('CART', JSON.stringify(cartItems));
-};
-///
 export const CartStateContextProvider = ({
 	children,
 }: {
