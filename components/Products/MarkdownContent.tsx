@@ -24,7 +24,7 @@ export const MarkdownContent = ({
 							);
 						}
 
-						if (href.startsWith('http')) {
+						if (href.includes('://') && href.startsWith('http')) {
 							return (
 								<a
 									{...props}
