@@ -34,8 +34,8 @@ export const ProductsPaginationSSG = () => {
 	}
 
 	return (
-		<nav className="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">
-			<div className="md:-mt-px">{pages}</div>
+		<nav className="flex items-center justify-between  px-4 sm:px-0">
+			<div className="mx-auto md:-mt-px">{pages}</div>
 		</nav>
 	);
 };

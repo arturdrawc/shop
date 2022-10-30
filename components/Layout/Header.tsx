@@ -11,7 +11,7 @@ export const Header = () => {
 	const router = useRouter();
 
 	return (
-		<header className="flex h-16 items-center justify-between bg-gray-800 px-6 lg:px-8">
+		<header className="flex h-16 items-center justify-between px-6 lg:px-8">
 			<nav>
 				<div className="flex space-x-4">
 					{routes.map((route, index) => {
@@ -22,10 +22,10 @@ export const Header = () => {
 							>
 								<a
 									className={
-										'rounded-md px-3 py-2 text-sm font-medium ' +
-										(router.pathname === route.href
-											? 'bg-gray-900 text-white'
-											: 'text-gray-300 hover:bg-gray-700 hover:text-white')
+										'rounded-md px-3 py-2 text-sm font-medium border-2 border-transparent ' +
+										(router.pathname.startsWith(route.href)
+											? 'text-gray-500 hover:bg-white hover:border-gray-500'
+											: 'text-pink-500 hover:bg-white hover:border-pink-500')
 									}
 								>
 									{route.name}

@@ -1,6 +1,6 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import Link from 'next/link';
-import { ProductDetails } fro../../../components/Products/ProductListItemetails';
+import { ProductDetails } from '../../../components/Products/ProductDetails';
 import { serialize } from 'next-mdx-remote/serialize';
 
 const ProductIdPage = ({

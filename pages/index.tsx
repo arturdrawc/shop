@@ -6,7 +6,7 @@ const DATA = {
 	title: 'Lorem ipsum',
 	description:
 		'Contrary to popular belief, Lorem Ipsum is not simply random text.',
-	thumbnailUrl: 'https://picsum.photos/id/1060/536/354',
+	thumbnailUrl: 'https://picsum.photos/180/320',
 	thumbnailAlt: 'Random image',
 	rating: 4.5,
 	price: 9.75,
