@@ -8,7 +8,7 @@ export const ProductsPaginationSSG = () => {
 	const router = useRouter();
 	const getPaginationStepClasses = (pageNumber: number) => {
 		const currentPage = router.asPath;
-		return currentPage === `/products/${pageNumber}`
+		return currentPage === `/SSG/${pageNumber}`
 			? 'font-bold text-pink-500 border-pink-500'
 			: 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300';
 	};
@@ -19,7 +19,7 @@ export const ProductsPaginationSSG = () => {
 		pages.push(
 			<Link
 				key={i}
-				href={`/products/${pageNumber}`}
+				href={`/SSG/${pageNumber}`}
 			>
 				<a
 					className={

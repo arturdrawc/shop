@@ -1,5 +1,5 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-import { ProductListItem } from '../../components/Products/ProductListItem';
+import { ProductListItemSSG } from '../../components/Products/ProductListItemSSG';
 import {
 	ProductsPaginationSSG,
 	PAGES_AMOUNT,
@@ -16,7 +16,7 @@ const ProductPage = ({
 				{data.map((product) => {
 					return (
 						<li key={product.id}>
-							<ProductListItem
+							<ProductListItemSSG
 								data={{
 									id: product.id,
 									title: product.title,

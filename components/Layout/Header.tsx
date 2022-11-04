@@ -4,7 +4,9 @@ import { CartBar } from '../Cart/CartBar';
 
 const routes = [
 	{ name: 'Home', href: '/' },
-	{ name: 'ProductsSSG', href: '/products/1' },
+	{ name: 'ProductsCSR', href: '/CSR' },
+	{ name: 'ProductsSSG', href: '/SSG/1' },
+	{ name: 'ProductsSSGAll', href: '/SSG-All/1' },
 ];
 
 export const Header = () => {

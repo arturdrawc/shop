@@ -5,7 +5,7 @@ import { useCartState } from '../Cart/CartContext';
 import { ProductListItemProps } from './product';
 import formatAsMoney from '../../utils/formatAsMoney';
 
-export const ProductListItem = ({ data }: ProductListItemProps) => {
+export const ProductListItemCSR = ({ data }: ProductListItemProps) => {
 	const cartState = useCartState();
 	const [isHovering, setIsHovering] = useState(false);
 
@@ -18,7 +18,7 @@ export const ProductListItem = ({ data }: ProductListItemProps) => {
 	};
 
 	return (
-		<Link href={`/products/item/${data.id}`}>
+		<Link href={`/CSR/item/${data.id}`}>
 			<a
 				onMouseOver={handleMouseOver}
 				onMouseOut={handleMouseOut}

@@ -1,5 +1,5 @@
 import { Main } from '../components/Main';
-import { ProductListItem } from '../components/Products/ProductListItem';
+import { ProductListItemSSG } from '../components/Products/ProductListItemSSG';
 
 const DATA = {
 	id: 1,
@@ -15,7 +15,7 @@ const DATA = {
 const Home = () => {
 	return (
 		<Main>
-			<ProductListItem data={DATA} />
+			<ProductListItemSSG data={DATA} />
 		</Main>
 	);
 };
